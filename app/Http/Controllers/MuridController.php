@@ -55,7 +55,23 @@ class MuridController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, murid $murid, $id)
+    // public function update(Request $request, murid $murid, $id)
+    // {
+    //     //
+    //     // $murid = murid::find($id);
+    //     $request->validate([
+    //         'nama' => 'required',
+    //         'grade_id' => 'required',
+    //     ]);
+
+    //     // $murid = murid::with(['grade'])->find($id);
+    //     $murid->update($request->all());
+
+    //     return response()->json([
+    //         'msg' => 'data berhasil diubah'
+    //     ]);
+    // }
+    public function update(Request $request, murid $murid)
     {
         //
         // $murid = murid::find($id);
@@ -64,8 +80,12 @@ class MuridController extends Controller
             'grade_id' => 'required',
         ]);
 
-        // $murid = murid::with(['grade'])->find($id);
-        $murid->update($request->all());
+        $murid->update([
+            'nama' => $request->nama,
+            'grade_id' => $request->grade_id
+        ]);
+
+
 
         return response()->json([
             'msg' => 'data berhasil diubah'

@@ -11,15 +11,17 @@
                                     type="text"
                                     class="form-control"
                                     v-model="murid.nama"
+                                    required
                                 />
                             </div>
                             <div class="form-group">
                                 <label for="">Kelas</label>
                                 <select
-                                    name=""
+                                    name="grade_id"
                                     id="grade_id"
                                     v-model="murid.grade_id"
                                     class="form-control"
+                                    required
                                 >
                                     <option selected disable>
                                         --PILIH KELAS--
@@ -106,7 +108,7 @@ export default {
                     );
                 } else {
                     await axios.put(
-                        `api/murids/${this.$route.params.id}`,
+                        `http://localhost:8000/api/murids/${this.$route.params.id}`,
                         this.murid
                     );
                 }
